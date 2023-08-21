@@ -58,11 +58,8 @@ public class AuthController {
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
-    String encodedPassword = encoder.encode(loginRequest.getPassword());
-    System.out.println("Plain: "+ loginRequest.getPassword());
-    System.out.println("Encoded: "+encodedPassword);
     Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), encodedPassword));
+            new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
 
