@@ -58,8 +58,11 @@ public class AuthController {
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
+    String encodedPassword = encoder.encode(loginRequest.getPassword());
+    System.out.println("Plain: "+ loginRequest.getPassword());
+    System.out.println("Encoded: "+encodedPassword);
     Authentication authentication = authenticationManager.authenticate(
-        new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+            new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), encodedPassword));
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -101,6 +104,11 @@ public class AuthController {
 
     Set<String> strRoles = signUpRequest.getRoles();
     Set<Role> roles = new HashSet<>();
+    String plainPassword = signUpRequest.getPassword();
+    String encodedPassword = encoder.encode(plainPassword);
+    System.out.println("Plain Password: " + plainPassword);
+    System.out.println("Encoded Password: " + encodedPassword);
+
 
     if (strRoles == null) {
       Role userRole = roleRepository.findByName(ERole.ROLE_USER)
