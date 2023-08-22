@@ -101,10 +101,7 @@ public class AuthController {
 
     Set<String> strRoles = signUpRequest.getRoles();
     Set<Role> roles = new HashSet<>();
-    String plainPassword = signUpRequest.getPassword();
-    String encodedPassword = encoder.encode(plainPassword);
-    System.out.println("Plain Password: " + plainPassword);
-    System.out.println("Encoded Password: " + encodedPassword);
+  
 
 
     if (strRoles == null) {
