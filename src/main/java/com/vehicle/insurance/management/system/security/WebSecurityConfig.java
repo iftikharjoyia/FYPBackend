@@ -90,10 +90,12 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 
           auth.requestMatchers("/api/auth/**").permitAll()
               .requestMatchers("/api/test/**").permitAll()
+              .requestMatchers("/api/auth/signupAgent").permitAll()
                   .requestMatchers("/api/email/send").permitAll()
                   .requestMatchers("/api/email/verify").permitAll()
                   .requestMatchers("/api/email/changepassword").permitAll()
-
+                  .requestMatchers("/api/personal-details/findbycnic").permitAll()
+                  .requestMatchers("/api/personal-details/addPersonalDetails").permitAll()
               .anyRequest().authenticated()
         );
 

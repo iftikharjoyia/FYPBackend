@@ -22,6 +22,15 @@ public class SignupRequest {
   @Size(min = 6, max = 40)
   private String password;
 
+  @Size(max = 120)
+  private String status;
+
+  @Size(max = 120)
+  private String companyName;
+
+  @Size(max = 120)
+  private String companyType;
+
   public String getUsername() {
     return username;
   }
@@ -60,5 +69,29 @@ public class SignupRequest {
 
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+  }
+
+  public String getCompanyType() {
+    return companyType;
+  }
+
+  public void setCompanyType(String companyType) {
+    this.companyType = companyType;
   }
 }

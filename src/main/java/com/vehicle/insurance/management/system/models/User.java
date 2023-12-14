@@ -33,11 +33,20 @@ public class User {
   @Size(max = 120)
   private String phoneNumber;
 
+  @Size(max = 120)
+  private String status;
+
+  @Size(max = 120)
+  private String companyName;
+
+  @Size(max = 120)
+  private String companyType;
   @DBRef
   private Set<Role> roles = new HashSet<>();
-
   public User() {
+    // Default constructor with no arguments
   }
+
 
   public User(String username, String email, String phoneNumber,String password) {
     this.username = username;
@@ -45,6 +54,8 @@ public class User {
     this.phoneNumber = phoneNumber;
     this.password = password;
   }
+
+
 
   public String getId() {
     return id;
@@ -92,5 +103,43 @@ public class User {
 
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
+  }
+
+
+  public User(String username,String email, String phoneNumber, String status, String companyName, String companyType, String password) {
+    this.username = username;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+    this.status = status;
+    this.companyName = companyName;
+    this.companyType = companyType;
+    this.password = password;
+
+
+  }
+
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+  }
+
+  public String getCompanyType() {
+    return companyType;
+  }
+
+  public void setCompanyType(String companyType) {
+    this.companyType = companyType;
   }
 }
