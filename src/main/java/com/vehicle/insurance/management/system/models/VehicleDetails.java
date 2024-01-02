@@ -15,6 +15,8 @@ public class VehicleDetails {
     private String color;
     private int year;
 
+    private String email;
+
     @DBRef
     private PersonalDetails owner; // Reference to the PersonalDetails collection
 
@@ -80,5 +82,13 @@ public class VehicleDetails {
 
     public void setOwner(PersonalDetails owner) {
         this.owner = owner;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

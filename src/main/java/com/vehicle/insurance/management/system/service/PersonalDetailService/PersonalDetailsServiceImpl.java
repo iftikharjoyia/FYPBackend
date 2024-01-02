@@ -20,6 +20,12 @@ public class PersonalDetailsServiceImpl implements PersonalDetailsService {
         return personalDetailsRepository.findByCnic(cnic);
     }
 
+    @Override
+    public PersonalDetails addPersonalDetails(PersonalDetails personalDetails) {
+        return personalDetailsRepository.save(personalDetails);
+    }
+
+
     // Implement other service methods for CRUD operations and additional functionalities
 
 }

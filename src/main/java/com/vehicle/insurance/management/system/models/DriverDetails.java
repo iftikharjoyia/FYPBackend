@@ -10,11 +10,10 @@ import java.time.LocalDateTime;
 public class DriverDetails {
 
     @Id
-    private String id; // MongoDB _id field
-
     private String licenseNumber;
-    private LocalDateTime expiryDate;
-    private int points;
+    private String expiryDate;
+    private String dob;
+    private String email;
 
     @DBRef
     private PersonalDetails owner; // Reference to the PersonalDetails collection
@@ -25,22 +24,16 @@ public class DriverDetails {
         // Default constructor
     }
 
-    public DriverDetails(String licenseNumber, LocalDateTime expiryDate, int points, PersonalDetails owner) {
+    public DriverDetails(String licenseNumber, String expiryDate, String dob, PersonalDetails owner) {
         this.licenseNumber = licenseNumber;
         this.expiryDate = expiryDate;
-        this.points = points;
+        this.dob = dob;
         this.owner = owner;
     }
 
     // Getters and setters
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getLicenseNumber() {
         return licenseNumber;
@@ -50,20 +43,20 @@ public class DriverDetails {
         this.licenseNumber = licenseNumber;
     }
 
-    public LocalDateTime getExpiryDate() {
+    public String getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(LocalDateTime expiryDate) {
+    public void setExpiryDate(String expiryDate) {
         this.expiryDate = expiryDate;
     }
 
-    public int getPoints() {
-        return points;
+    public String getDob() {
+        return dob;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
+    public void setDob(String points) {
+        this.dob = dob;
     }
 
     public PersonalDetails getOwner() {
@@ -72,5 +65,13 @@ public class DriverDetails {
 
     public void setOwner(PersonalDetails owner) {
         this.owner = owner;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

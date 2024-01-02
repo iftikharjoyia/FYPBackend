@@ -39,15 +39,18 @@ public class PersonalDetailsController {
     @PostMapping("/addPersonalDetails")
     public ResponseEntity<PersonalDetails> addPersonalDetails(@RequestBody Map<String,String> request) {
         String cnic=request.get("cnic");
+        PersonalDetails personalDetails=personalDetailsService.findByCnic(cnic);
+
         String name=request.get("name");
         String verificationDate=request.get("verificationDate");
         String verificationStatus=request.get("verificationStatus");
         String email=request.get("email");
-
-        PersonalDetails personalDetailsData=new PersonalDetails(cnic,name,verificationDate,verificationStatus,email);
-
-        PersonalDetails personalDetails = personalDetailRepository.save(personalDetailsData);
-        if (personalDetails != null) {
+        personalDetails.setName(name);
+        personalDetails.setVerificationDate(verificationDate);
+        personalDetails.setVerificationStatus(verificationStatus);
+        personalDetails.setEmail(email);
+        PersonalDetails personalDetailsdata = personalDetailsService.addPersonalDetails(personalDetails);
+        if (personalDetailsdata != null) {
             return new ResponseEntity<>(personalDetails, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
