@@ -81,8 +81,13 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>6.0.9</version>
 		</dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>4.9.1</version>
+        </dependency>
 
-		<!-- Java Activation Framework -->
+        <!-- Java Activation Framework -->
 
 	</dependencies>
 

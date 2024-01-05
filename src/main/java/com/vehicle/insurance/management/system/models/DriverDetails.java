@@ -24,11 +24,11 @@ public class DriverDetails {
         // Default constructor
     }
 
-    public DriverDetails(String licenseNumber, String expiryDate, String dob, PersonalDetails owner) {
+    public DriverDetails(String licenseNumber, String expiryDate, String dob,  String email) {
         this.licenseNumber = licenseNumber;
         this.expiryDate = expiryDate;
         this.dob = dob;
-        this.owner = owner;
+        this.email=email;
     }
 
     // Getters and setters

@@ -14,11 +14,12 @@ public class PaymentDetails {
     }
 
     // Constructor with parameters
-    public PaymentDetails(String cardNumber, String cardHolderName, String expirationDate, int cvv) {
+    public PaymentDetails(String cardNumber, String cardHolderName, String expirationDate, int cvv, String email ) {
         this.cardNumber = cardNumber;
         this.cardHolderName = cardHolderName;
         this.expirationDate = expirationDate;
         this.cvv = cvv;
+        this.email = email;
     }
 
     // Getter and setter methods

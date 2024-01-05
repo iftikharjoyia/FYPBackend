@@ -5,6 +5,8 @@ import com.vehicle.insurance.management.system.repository.VehicleDetailsReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class VehicleDetailsServiceImpl implements VehicleDetailsService {
 
@@ -23,6 +25,16 @@ public class VehicleDetailsServiceImpl implements VehicleDetailsService {
     @Override
     public VehicleDetails addVehicleDetails(VehicleDetails vehicleDetails) {
         return vehicleDetailsRepository.save(vehicleDetails);
+    }
+
+    @Override
+    public List<VehicleDetails> getAllVehicles() {
+        return vehicleDetailsRepository.findAll();
+    }
+
+    @Override
+    public List<VehicleDetails> getVehiclesByEmail(String email) {
+        return vehicleDetailsRepository.findByEmail(email);
     }
 
     // Implement other service methods for CRUD operations and additional functionalities

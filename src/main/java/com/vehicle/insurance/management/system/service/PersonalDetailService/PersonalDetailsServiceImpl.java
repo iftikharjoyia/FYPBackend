@@ -5,6 +5,8 @@ import com.vehicle.insurance.management.system.repository.PersonalDetailReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonalDetailsServiceImpl implements PersonalDetailsService {
 
@@ -23,6 +25,16 @@ public class PersonalDetailsServiceImpl implements PersonalDetailsService {
     @Override
     public PersonalDetails addPersonalDetails(PersonalDetails personalDetails) {
         return personalDetailsRepository.save(personalDetails);
+    }
+
+    @Override
+    public List<PersonalDetails> getAllPersonalDetails() {
+        return personalDetailsRepository.findAll();
+    }
+
+    @Override
+    public List<PersonalDetails> getPersonalDetailsByEmail(String email) {
+        return personalDetailsRepository.findByEmail(email);
     }
 
 

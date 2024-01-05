@@ -9,4 +9,5 @@ import com.vehicle.insurance.management.system.models.Role;
 
 public interface RoleRepository extends MongoRepository<Role, String> {
   Optional<Role> findByName(ERole name);
+
 }

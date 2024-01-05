@@ -5,6 +5,8 @@ import com.vehicle.insurance.management.system.repository.DriverDetailsRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DriverDetailsServiceImpl implements DriverDetailsService {
 
@@ -24,6 +26,17 @@ public class DriverDetailsServiceImpl implements DriverDetailsService {
     public DriverDetails addDriverDetails(DriverDetails driverDetails) {
         return driverDetailsRepository.save(driverDetails);
     }
+
+    @Override
+    public List<DriverDetails> getAllDrivers() {
+        return driverDetailsRepository.findAll();
+    }
+
+    @Override
+    public List<DriverDetails> getDriverByEmail(String email) {
+        return driverDetailsRepository.findByEmail(email);
+    }
+
 
     // Implement other service methods for CRUD operations and additional functionalities
 }

@@ -26,12 +26,12 @@ public class VehicleDetails {
         // Default constructor
     }
 
-    public VehicleDetails(String registrationNumber, String model, String color, int year, PersonalDetails owner) {
+    public VehicleDetails(String registrationNumber, String model, String color, int year, String email) {
         this.registrationNumber = registrationNumber;
         this.model = model;
         this.color = color;
         this.year = year;
-        this.owner = owner;
+        this.email = email;
     }
 
     // Getters and setters
