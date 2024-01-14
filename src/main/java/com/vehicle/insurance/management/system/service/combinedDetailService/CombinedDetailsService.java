@@ -66,6 +66,44 @@ public class CombinedDetailsService {
         return combinedDetailsList;
     }
 
+
+    public List<CombinedDetailsDTO> getCombinedDetailsByEmail(String email) {
+        List<CombinedDetailsDTO> combinedDetailsList = new ArrayList<>();
+
+        List<VehicleDetails> vehicleDetailsList = vehicleDetailsService.getVehiclesByEmail(email);
+        for (VehicleDetails vehicleDetails : vehicleDetailsList) {
+            CombinedDetailsDTO combinedDetails = new CombinedDetailsDTO();
+            combinedDetails.setEmail(vehicleDetails.getEmail());
+            combinedDetails.setRegistrationNumber(vehicleDetails.getRegistrationNumber());
+            combinedDetails.setColor(vehicleDetails.getColor());
+            combinedDetails.setModel(vehicleDetails.getModel());
+            combinedDetails.setYear(vehicleDetails.getYear());
+
+            // Find matching driver details
+            List<DriverDetails> matchingDrivers = driverDetailsService.getDriverByEmail(email);
+            if (!matchingDrivers.isEmpty()) {
+                DriverDetails matchingDriver = matchingDrivers.get(0); // Assuming there is only one matching driver
+                combinedDetails.setLicenseNumber(matchingDriver.getLicenseNumber());
+                combinedDetails.setExpiryDate(matchingDriver.getExpiryDate());
+                combinedDetails.setDob(matchingDriver.getDob());
+            }
+
+            // Find matching personal details
+            List<PersonalDetails> matchingPersonals = personalDetailsService.getPersonalDetailsByEmail(email);
+            if (!matchingPersonals.isEmpty()) {
+                PersonalDetails matchingPersonal = matchingPersonals.get(0); // Assuming there is only one matching personal
+                combinedDetails.setCnic(matchingPersonal.getCnic());
+                combinedDetails.setName(matchingPersonal.getName());
+            }
+
+            combinedDetailsList.add(combinedDetails);
+        }
+
+        return combinedDetailsList;
+    }
+
+
+
     private DriverDetails findMatchingDriver(List<DriverDetails> driverDetailsList, String email) {
         return driverDetailsList.stream()
                 .filter(driverDetails -> email.equals(driverDetails.getEmail()))

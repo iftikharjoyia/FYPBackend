@@ -1,8 +1,7 @@
 package com.vehicle.insurance.management.system.controllers;
 
-import com.vehicle.insurance.management.system.models.CombinedDetails;
 import com.vehicle.insurance.management.system.models.CombinedDetailsDTO;
-import com.vehicle.insurance.management.system.service.Combine.CombinedService;
+
 import com.vehicle.insurance.management.system.service.combinedDetailService.CombinedDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,8 +17,7 @@ public class CombinedDetailsController {
 
     private final CombinedDetailsService combinedDetailsService;
 
-    @Autowired
-    private CombinedService combinedService;
+
 
     @Autowired
     public CombinedDetailsController(CombinedDetailsService combinedDetailsService) {
@@ -37,15 +35,16 @@ public class CombinedDetailsController {
         }
     }
 
-    @CrossOrigin(origins = "*", maxAge = 3600)
     @GetMapping("/getCombinedDetailsByEmail")
-    public ResponseEntity<CombinedDetails> getCombinedDetailsEmail(@RequestParam String email) {
-        CombinedDetails combinedDetails = combinedService.getCombinedDetailsByEmail(email);
+    public ResponseEntity<List<CombinedDetailsDTO>> getCombinedDetailsByEmail(@RequestParam String email) {
+        List<CombinedDetailsDTO> combinedDetailsList = combinedDetailsService.getCombinedDetailsByEmail(email);
 
-        if (combinedDetails != null) {
-            return new ResponseEntity<>(combinedDetails, HttpStatus.OK);
+        if (!combinedDetailsList.isEmpty()) {
+            return new ResponseEntity<>(combinedDetailsList, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+
 }

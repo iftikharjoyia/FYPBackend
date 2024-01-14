@@ -14,5 +14,7 @@ public interface VehicleDetailsService {
 
     public List<VehicleDetails> getVehiclesByEmail(String email) ;
 
+
+
     // Add other methods for CRUD operations and additional functionalities
 }
